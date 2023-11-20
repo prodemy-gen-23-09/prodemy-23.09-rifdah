@@ -1,0 +1,110 @@
+*{
+  font-family: Georgia, serif;
+}
+
+body{
+  text-align: center;
+}
+
+header{
+  text-align: left;
+  width: 100%;
+  padding: 20px 10%;
+}
+
+.logo img{
+  max-width: 150px;
+  height: auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+}
+
+li a {
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover{
+  color: #0e2ecc;
+}
+
+section{
+  padding: 5% 0%;
+}
+
+.main-home{
+  width: 100%;
+  background-position: center;
+  align-items: center;
+}
+
+.main-text h5{
+  color: #EE1C47;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.main-text h1{
+  color: #000;
+  font-size: 65px;
+  text-transform: capitalize;
+  line-height: 1.1;
+  font-weight: 600;
+  margin: 6px 0 10px;
+}
+
+.main-text p{
+  color: #333c56;
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.main-btn{
+  display: inline-block;
+  color: #111;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  border: 2px solid #111;
+  padding: 12px 25px;
+}
+
+.main-btn:hover{
+  background-color: #000;
+  color: #fff;
+}
+
+.main-btn i{
+  vertical-align: middle;
+}
+
+.row img{
+  justify-content: center;
+  width: 20%;
+  height: auto;
+  margin: 20px;
+}
+
+.price p{
+  color: #111;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.price h4{
+  color: #151515;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
