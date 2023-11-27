@@ -3,7 +3,7 @@ function redirectToProductDetail(productId, productName, productPrice, productIm
   window.location.href = productDetailUrl;
 }
 
-//Function Untuk Menangkap Data Dari Halaman List Product
+// Function Untuk Menangkap Data Dari Halaman List Product
 var urlParams = new URLSearchParams(window.location.search);
 var productId = urlParams.get("id");
 var productName = urlParams.get("name");
