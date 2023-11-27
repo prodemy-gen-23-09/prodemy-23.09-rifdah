@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body class="font-Jost">
+    <div>
+        <header class="fixed top-0 right-0 w-full h-28 py-2 shadow-sm bg-white ">
+            <div class="container flex -mt-4 items-center justify-between">
+                <a href="#">
+                    <img src="images/logo.png" class="w-32">
+                </a>
+                <nav class="flex">
+                    <ul class="flex space-x-4 font-semibold capitalize">
+                        <li><a href="#" class="hover:text-primary transition-all duration-420 ease">Home</a></li>
+                        <li><a href="#" class="hover:text-primary transition-all duration-420 ease">Shop</a></li>
+                        <li><a href="#" class="hover:text-primary transition-all duration-420 ease">Brands</a></li>
+                    </ul>
+                </nav>
+
+                <!-- icons -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
+                        <!-- <a href="#" class="text-center text-gray-700 hover:text-primary hover:transform scale-130 transition-all duration-420 ease"> -->
+                        <div class="text-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                            </svg>
+                        </div>
+                        <div class="text-xs leading-3">Search</div>
+                    </a>
+                    <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
+                        <!-- <a href="#" class="text-center text-gray-700 hover:text-primary transform scale-130 transition-all duration-420 ease"> -->
+                        <div class="text-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                            </svg>
+                        </div>
+                        <div class="text-xs leading-3">Wish List</div>
+                        <span
+                            class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">99</span>
+                    </a>
+                    <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
+                        <!-- <a href="#" class="text-center text-gray-700 hover:text-primary transform scale-130 transition-all duration-420 ease"> -->
+                        <div class="text-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                            </svg>
+                        </div>
+                        <div class="text-xs leading-3">Cart</div>
+                        <span
+                            class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">99</span>
+                    </a>
+                    <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
+                        <!-- <a href="#" class="text-center text-gray-700 hover:text-primary transform scale-130 transition-all duration-420 ease"> -->
+                        <div class="text-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                            </svg>
+                        </div>
+                        <div class="text-xs leading-3">Account</div>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="container mt-36 py-4 flex items-center gap-3">
+            <a href="#" class="text-gray-600 text-base hover:text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>
+            </a>
+            <span class="text-sm text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </span>
+            <p class="text-primary font-medium">Product View</p>
+        </div>
+
+        <!-- product view -->
+        <div class="container grid grid-cols-2 gap-6">
+            <!-- product image -->
+            <div>
+                <img src="images/6.jpg" alt="" class="w-full" id="productImage">
+                <div class="grid grid-cols-5 gap-2 -mt-10">
+                    <img src="images/6.jpg" alt="" class="w-full cursor-pointer border border-primary">
+                    <img src="images/16.jpg" alt="" class="w-full cursor-pointer border">
+                    <img src="images/17.jpg" alt="" class="w-full cursor-pointer border">
+                    <img src="images/18.jpg" alt="" class="w-full cursor-pointer border">
+                    <img src="images/19.jpg" alt="" class="w-full cursor-pointer border">
+                </div>
+            </div>
+            <!-- product image end -->
+
+            <!-- product content -->
+            <div>
+                <h2 class="text-3xl font-medium capitalize mb-2" id="productName">Boucle Cropped Jacket</h2>
+                <div class="flex items-center mb-4">
+                    <div class="flex gap-1 text-sm text-yellow-400">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                            </svg>
+                        </span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                            </svg>
+                        </span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                            </svg>
+                        </span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                            </svg>
+                        </span>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="font-semibold text-gray-500 ml-3">(5.0)</div>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-800 font-semibold space-x-2">
+                        <span>Availability : </span>
+                        <span class="text-green-600">In Stock</span>
+                    </p>
+                    <p class="space-x-2">
+                        <span class="text-gray-800 font-semibold">Brand : </span>
+                        <span class="text-gray-600">Self Portrait</span>
+                    </p>
+                    <p class="space-x-2">
+                        <span class="text-gray-800 font-semibold">Category : </span>
+                        <span class="text-gray-600">Clothing</span>
+                    </p>
+                </div>
+                <div class="flex items-baseline mb-1 space-x-2 font-Jost mt-4">
+                    <p class="text-2xl text-primary font-semibold" id="productPrice">Rp 690.000,00</p>
+                    <p class="text-base text-gray-400 line-through">Rp 750.000,00</p>
+                </div>
+                <h3 class="mt-4 uppercase font-semibold">Editor's Note</h3>
+                <p class="mt-2 text-gray-600 text-justify">
+                    Known as the go-to for guest-of wedding dresses, Han Chong’s strength at Self-Portrait has always
+                    been
+                    understanding how women want to feel when they go out.
+                    <br>
+                    <br>
+                    This is definitely not your typical blazer. Crafted from boucle, this blazer has a slightly boxy fit
+                    and
+                    cropped hem that actually makes it so versatile. Style it with the matching skirt for the ultimate
+                    power
+                    outfit, or keep things a bit more casual and pair with medium wash high-rise denim, cream colored
+                    pumps
+                    and oversized clutch. Finish it off with small gold hoop earrings.
+                </p>
+
+                <div class="mt-4">
+                    <h3 class="text-sm text-gray-800 uppercase font-semibold mb-3">Quantity</h3>
+                    <div class="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
+                        <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">-</div>
+                        <div class="h-8 w-8 text-xl flex items-center justify-center">2</div>
+                        <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">+</div>
+                    </div>
+                </div>
+
+                <div class="flex gap-3 border-b border-gray-200 pb-5 mt-6">
+                    <a href="#"
+                        class="bg-primary border border-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:shadow-xl transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                        </svg>
+                        Add to cart
+                    </a>
+                    <a href="#"
+                        class="border border-gray-300 text-gray-600 text-primary px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:shadow-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                        Wishlist
+                    </a>
+                </div>
+                <!-- cart button end -->
+            </div>
+            <!-- product content end -->
+        </div>
+        <!-- product view end -->
+
+        <!-- product view details -->
+        <div class="container pb-16">
+            <h3 class="border-b border-gray-200 text-gray-800 pb-3 font-semibold uppercase mt-4">Product Details</h3>
+            <div class="w-3/5 pt-6">
+                <div class="text-gray-600 space-y-3">
+                    <li>Button front closure</li>
+                    <li>Composition: boucle</li>
+                    <li>Dry clean only</li>
+                    <li>Imported</li>
+                </div>
+            </div>
+        </div>
+        <!-- product view details end -->
+
+        <!-- footer -->
+        <footer class="bg-gray-100 pt-16 pb-12 border-t border-gray-100">
+            <div class="container grid grid-cols-3">
+                <!-- footer text -->
+                <div class="col-span-1 space-y-2">
+                    <img src="images/logo.png" class="w-32">
+                    <p class="text-gray-500 font-semibold hover:text-primary">Jakarta</p>
+                    <p class="text-gray-500 font-semibold hover:text-primary">0812345678910</p>
+                    <p class="text-gray-500 font-semibold hover:text-primary">user-info@gmail.com</p>
+                    <div class="flex space-x-2">
+                        <a href="#" class="text-gray-400 font-semibold hover:text-primary">
+                            <i class="bx bxl-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 font-semibold hover:text-primary">
+                            <i class="bx bxl-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 font-semibold hover:text-primary">
+                            <i class="bx bxl-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 font-semibold hover:text-primary">
+                            <i class="bx bxl-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- footer text end -->
+
+                <!-- footer links -->
+                <div class="col-span-2 gap-8 items-center ml-20">
+                    <div class="grid grid-cols-2 gap-60">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-600 font-bold uppercase tracking-wider">Support
+                            </h3>
+                            <div class="mt-4 space-y-4">
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">Contact
+                                    Us</a>
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">About
+                                    Page</a>
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">Size
+                                    Guide</a>
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">Shopping
+                                    & Returns</a>
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">Privacy</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-600 font-bold uppercase tracking-wider">Shop</h3>
+                            <div class="mt-4 space-y-4">
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">Women's
+                                    Shopping</a>
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">Kid's
+                                    Shopping</a>
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">Discount</a>
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">Sale</a>
+                                <a href="#"
+                                    class="text-base text-gray-500 font-semibold capitalize hover:text-primary block">BestSellers</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer links end -->
+            </div>
+        </footer>
+        <!-- footer end -->
+
+        <!-- copyright -->
+        <div class="bg-white py-4">
+            <div class="container flex items-center">
+                <p class="text-gray-600 font-bold mx-auto">Copyright &copy; 2023. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
