@@ -315,7 +315,7 @@
     productPrice, 
     productImage
     ) {
-    var previewProductUrl = 
+    const previewProductUrl = 
     "previewproduct.html?id=" + 
     productId + 
     "&name=" + 
@@ -327,11 +327,11 @@
     window.location.href = previewProductUrl;
     }
   
-    var urlParams = new URLSearchParams(window.location.search);
-    var productId = urlParams.get("id");
-    var productName = urlParams.get("name");
-    var productPrice = urlParams.get("price");
-    var productImage = urlParams.get("image");
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get("id");
+    const productName = urlParams.get("name");
+    const productPrice = urlParams.get("price");
+    const productImage = urlParams.get("image");
   
     document.querySelector("#productName").innerText = productName;
     document.querySelector("#productPrice").innerText = productPrice;
