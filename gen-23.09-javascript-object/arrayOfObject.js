@@ -40,12 +40,12 @@ const mahasiswa = [
 // const filteredMahasiswa = mahasiswa.filter(mahasiswa => mahasiswa.umur > 21);
 
 // Filter data mahasiswa yang berusia lebih dari atau sama dengan 23 tahun 
-const filteredMahasiswa = mahasiswa.filter(mahasiswa => mahasiswa.umur >= 23);
+// const filteredMahasiswa = mahasiswa.filter(mahasiswa => mahasiswa.umur >= 23);
 
 // // Filter data mahasiswa yang berkuliah di jurusan Kimia
-// const filteredMahasiswa = mahasiswa.filter(mahasiswa => mahasiswa.jurusan === 'Kimia');
+const filteredMahasiswa = mahasiswa.filter(mahasiswa => mahasiswa.jurusan === 'Kimia');
 
-// Ambil nama-nama students yang sesuai kriteria
+// Ambil nama-nama mahasiswa yang sesuai kriteria
 const result = filteredMahasiswa.map(mahasiswa => mahasiswa.nama);
 
 // Tampilkan hasil filter di console

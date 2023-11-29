@@ -19,17 +19,17 @@
 // console.log(mahasiswa.jurusan);
 
 // // Cara 2
-const mahasiswa = {
-    nama : 'Kezya Anindita',
-    umur : 21,
-    jurusan : 'Kimia',
-};
+// const mahasiswa = {
+//     nama : 'Kezya Anindita',
+//     umur : 21,
+//     jurusan : 'Kimia',
+// };
 
 // pake spread
-const mhs = {...mahasiswa};
-mhs.umur = 24;
-mhs.jurusan = 'Pendidikan Dokter Gigi';
-console.log("mahasiswa (after changing):", mhs);
+// const mhs = {...mahasiswa};
+// mhs.umur = 24;
+// mhs.jurusan = 'Pendidikan Dokter Gigi';
+// console.log("mahasiswa (after changing):", mhs);
 
 // // Fungsi untuk mengubah objek berdasarkan input pengguna
 // function updateObject(umur, jurusan) {
@@ -46,26 +46,26 @@ console.log("mahasiswa (after changing):", mhs);
 // console.log(updateObject(targetNama, newJurusan, newUmur));
 
 
-// // Array of Object
-// const mahasiswa = [
-//     {
-//       nama : 'Rifdah Kamilah',
-//       umur : 22,
-//       jurusan : 'Matematika'
-//     },
-//     {
-//       nama : 'Zahra Yasmine',
-//       umur : 23,
-//       jurusan : 'Teknik Industri'
-//     },
-// ]
+// Array of Object
+const mahasiswa = [
+    {
+      nama : 'Rifdah Kamilah',
+      umur : 22,
+      jurusan : 'Matematika'
+    },
+    {
+      nama : 'Zahra Yasmine',
+      umur : 23,
+      jurusan : 'Teknik Industri'
+    },
+]
 
-// const mhs1 = mahasiswa[0];
-// const mhs2 = mahasiswa[1];
-// mhs1.umur = 23;
-// mhs1.jurusan = 'Kimia';
-// mhs2.umur = 24;
-// mhs2.jurusan = 'Fisika';
+const mhs1 = mahasiswa[0];
+const mhs2 = mahasiswa[1];
+mhs1.umur = 23;
+mhs1.jurusan = 'Kimia';
+mhs2.umur = 24;
+mhs2.jurusan = 'Fisika';
 
-// console.log(mahasiswa);
+console.log(mahasiswa);
 
