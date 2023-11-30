@@ -1,6 +1,8 @@
 import React from 'react'
 
 function ProductCard(props){
+  // Mengakses data yang diterima melalui props
+  // ChildComponent menggunakan data ntuk menampilkan informasi seperti title, description, dan price.
   return (
     <div className='w-80 p-4 bg-white rounded-lg relative justify-center align-center text-center mb-4 -mt-32'>
       <div className='p-8 bg-bgGray rounded-lg'>
