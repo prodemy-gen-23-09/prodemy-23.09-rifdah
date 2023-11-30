@@ -13,9 +13,6 @@ module.exports = {
       padding: '1rem'
     },
     extend: {
-      // backgroundImage: {
-      //   'hero-pattern': "url('images/image.jpg')",
-      // },
       colors: {
         'primary' : '#FD3D57'
       },

@@ -1,0 +1,107 @@
+export const data = [
+  {
+    id: 1,
+    description: 'Sale',
+    img: '/public/images/1.jpg',
+    title: 'Pleated Drawstring Pants',
+    price: 'Rp 550.000,00 - Rp 625.000,00',
+  },
+  {
+    id: 2,
+    description: 'Disc Up To 50%',
+    img: '/public/images/2.jpg',
+    title: 'Cocoon Cotton Shirt',
+    price: 'Rp 300.000,00 - Rp 325.000,00',
+  },
+  {
+    id: 3,
+    description: 'New Arrival',
+    img: '/public/images/3.jpg',
+    title: 'Marbella Silk Satin Batwing Shirt',
+    price: 'Rp 215.000,00 - Rp 250.000,00',
+  },
+  {
+    id: 4,
+    description: 'Disc Up To 20%',
+    img: '/public/images/4.jpg',
+    title: "Altermat Belted Jumpsuit",
+    price: 'Rp 500.000,00 - Rp 850.000,00',
+  },
+  {
+    id: 5,
+    description: 'Sale',
+    img: '/public/images/5.jpg',
+    title: 'Lennox Satin Jacket',
+    price: 'Rp 225.000,00 - Rp 550.000,00',
+  },
+  {
+    id: 6,
+    description: 'New Arrival',
+    img: '/public/images/6.jpg',
+    title: 'Boucle Cropped Jacket',
+    price: 'Rp 675.000,00 - Rp 690.000,00'
+  },
+  {
+    id: 7,
+    description: 'Sale',
+    img: '/public/images/7.jpg',
+    title: 'Pleated Cotton Shorts',
+    price: 'Rp 435.000,00 - Rp 450.000,00',
+  },
+  {
+    id: 8,
+    description: 'New Arrival',
+    img: '/public/images/8.jpg',
+    title: 'Bienal Lame Blouse',
+    price: 'Rp 675.000,00 - Rp 700.000,00',
+  },
+  {
+    id: 9,
+    description: 'Disc Up To 30%',
+    img: '/public/images/9.jpg',
+    title: 'Bremy Wool Pants',
+    price: 'Rp 435.000,00 - Rp 475.000,00',
+  },
+  {
+    id: 10,
+    description: 'Disc Up To 50%',
+    img: '/public/images/10.jpg',
+    title: "Exclusive Pleated Wool Midi Skirt",
+    price: 'Rp 355.000,00 - Rp 375.000,00',
+  },
+  {
+    id: 11,
+    description: 'New Arrival',
+    img: '/public/images/11.jpg',
+    title: 'Tie-Detailed Linen-Canvas Shorts',
+    price: 'Rp 375.000,00 - Rp 400.000,00',
+  },
+  {
+    id: 12,
+    description: 'Sale',
+    img: '/public/images/12.jpg',
+    title: 'Exclusive Denim Jacket',
+    price: 'Rp 535.000,00 - Rp 550.000,00'
+  },
+  {
+    id: 13,
+    description: 'New Arrival',
+    img: '/public/images/13.jpg',
+    title: "Paneled Denim and Twill Jacket",
+    price: 'Rp 1.350.000,00 - Rp 1.500.000,00',
+  },
+  {
+    id: 14,
+    description: 'New Arrival',
+    img: '/public/images/14.jpg',
+    title: 'Rozalia Flared Pants',
+    price: 'Rp 335.000,00 - Rp 350.000,00',
+  },
+  {
+    id: 15,
+    description: 'Disc Up To 40%',
+    img: '/public/images/15.jpg',
+    title: 'Lison Cotton Cargo Pants',
+    price: 'Rp 435.000,00 - Rp 475.000,00'
+  },
+];
