@@ -18,7 +18,8 @@
                 </a>
                 <nav class="flex">
                     <ul class="flex space-x-4 font-semibold capitalize">
-                        <li><a href="listproduct.html" class="hover:text-primary transition-all duration-420 ease">Home</a></li>
+                        <li><a href="listproduct.html"
+                                class="hover:text-primary transition-all duration-420 ease">Home</a></li>
                         <li><a href="#" class="hover:text-primary transition-all duration-420 ease">Shop</a></li>
                         <li><a href="#" class="hover:text-primary transition-all duration-420 ease">Brands</a></li>
                     </ul>
@@ -96,12 +97,12 @@
             <!-- product image -->
             <div>
                 <img src="images/6.jpg" alt="" class="w-full" id="mainImage">
-                <div class="grid grid-cols-5 gap-2 -mt-10">
-                    <img src="images/6.jpg" alt="" class="w-full cursor-pointer border border-primary">
-                    <img src="images/16.jpg" alt="" class="w-full cursor-pointer border">
-                    <img src="images/17.jpg" alt="" class="w-full cursor-pointer border">
-                    <img src="images/18.jpg" alt="" class="w-full cursor-pointer border">
-                    <img src="images/19.jpg" alt="" class="w-full cursor-pointer border">
+                <div class="grid grid-cols-5 gap-2 mt-2">
+                    <img src="images/6.jpg" alt="" class="w-full cursor-pointer" onclick="showImage('images/6.jpg')">
+                    <img src="images/16.jpg" alt="" class="w-full cursor-pointer" onclick="showImage('images/16.jpg')">
+                    <img src="images/17.jpg" alt="" class="w-full cursor-pointer" onclick="showImage('images/17.jpg')">
+                    <img src="images/18.jpg" alt="" class="w-full cursor-pointer" onclick="showImage('images/18.jpg')">
+                    <img src="images/19.jpg" alt="" class="w-full cursor-pointer" onclick="showImage('images/19.jpg')">
                 </div>
             </div>
             <!-- product image end -->
@@ -309,32 +310,37 @@
     </div>
 </body>
 <script>
-    function setPreviewProduct(
-    productId, 
-    productName, 
-    productPrice, 
-    productImage
-    ) {
-    const previewProductUrl = 
-    "previewproduct.html?id=" + 
-    productId + 
-    "&name=" + 
-    encodeURIComponent(productName) + 
-    "&price=" + 
-    encodeURIComponent(productPrice) + 
-    "&image=" + 
-    encodeURIComponent(productImage);
-    window.location.href = previewProductUrl;
+    function showImage(imagePath) {
+        // Mengganti gambar utama dengan yang diklik
+        document.querySelector("#mainImage").src = imagePath;
     }
-  
+    function setPreviewProduct(
+        productId,
+        productName,
+        productPrice,
+        productImage
+    ) {
+        const previewProductUrl =
+            "previewproduct.html?id=" +
+            productId +
+            "&name=" +
+            encodeURIComponent(productName) +
+            "&price=" +
+            encodeURIComponent(productPrice) +
+            "&image=" +
+            encodeURIComponent(productImage);
+        window.location.href = previewProductUrl;
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get("id");
     const productName = urlParams.get("name");
     const productPrice = urlParams.get("price");
     const productImage = urlParams.get("image");
-  
+
     document.querySelector("#productName").innerText = productName;
     document.querySelector("#productPrice").innerText = productPrice;
     document.querySelector("#mainImage").src = productImage;
-  </script>
+</script>
+
 </html>
