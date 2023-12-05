@@ -3,8 +3,17 @@ import ProductCard from "../components/ProductCard";
 import Headline from "../components/Headline";
 import Home from "../components/Home";
 import { data } from "../data/data.js";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProductList = () => {
+  const navigate = useNavigate();
+
+  const handleProductSelection = (productId) => {
+    // Lakukan apa pun yang perlu dilakukan saat produk dipilih
+
+    // Navigasi ke halaman detail produk
+    navigate(`/detail/${productId}`);
+  };
   const [products, setProducts] = useState(data);
   const [sortDate, setSortDate] = useState("newest"); // default
   const [sortPrice, setSortPrice] = useState("highest"); // default
@@ -12,7 +21,6 @@ const ProductList = () => {
   useEffect(() => {
     let sortedProducts = [...data];
 
-    // Sort by release date
     if (sortDate === "newest") {
       sortedProducts.sort(
         (a, b) => new Date(b.releaseDate) - new Date(a.releaseDate)
@@ -23,7 +31,6 @@ const ProductList = () => {
       );
     }
 
-    // Sort by price
     if (sortPrice === "highest") {
       sortedProducts.sort((a, b) => b.price - a.price);
     } else if (sortPrice === "lowest") {
@@ -37,7 +44,6 @@ const ProductList = () => {
     setSortPrice((prevSortPrice) =>
       prevSortPrice === "highest" ? "lowest" : "highest"
     );
-    // Set default sortDate when sorting by price
     setSortDate("highest");
   };
 
@@ -45,7 +51,6 @@ const ProductList = () => {
     setSortDate((prevSortDate) =>
       prevSortDate === "newest" ? "oldest" : "newest"
     );
-    // Set default sortPrice when sorting by date
     setSortPrice("newest");
   };
 
@@ -75,6 +80,7 @@ const ProductList = () => {
         sortOrder={sortDate}
         sortPrice={sortPrice}
         setProducts={setProducts}
+        onClick={handleProductSelection}
       />
     </div>
   );

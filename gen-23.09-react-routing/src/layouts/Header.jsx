@@ -14,7 +14,6 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   const [header, setHeader] = useState(false);
@@ -31,9 +30,9 @@ const Header = () => {
         >
           <IconMenu2 size={30} />
         </div>
-        <Link to="/detail">
+        <a href="#">
           <img src="/images/logo.png" className="w-32" />
-        </Link>
+        </a>
         <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2 font-bold flex">
           Beauty <span className="font-bold text-primary">Fashion</span>
         </h1>

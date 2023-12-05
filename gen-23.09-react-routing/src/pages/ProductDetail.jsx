@@ -1,10 +1,19 @@
 import React from "react";
-import ProductView from "../layouts/ProductView";
+import ProductContent from "../components/ProductContent";
+import { data } from "../data/data.js";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ProductDetail = () => {
+  const { id } = useParams();
+  const selectedProduct = data.find((product) => product.id === parseInt(id));
+
+  if (!selectedProduct) {
+    return <div></div>;
+  }
+
   return (
     <div>
-      <ProductView />
+      <ProductContent products={[selectedProduct]} />
     </div>
   );
 };
