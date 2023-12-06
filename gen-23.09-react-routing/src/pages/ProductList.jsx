@@ -3,17 +3,15 @@ import ProductCard from "../components/ProductCard";
 import Headline from "../components/Headline";
 import Home from "../components/Home";
 import { data } from "../data/data.js";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProductList = () => {
   const navigate = useNavigate();
 
   const handleProductSelection = (productId) => {
-    // Lakukan apa pun yang perlu dilakukan saat produk dipilih
-
-    // Navigasi ke halaman detail produk
     navigate(`/detail/${productId}`);
   };
+
   const [products, setProducts] = useState(data);
   const [sortDate, setSortDate] = useState("newest"); // default
   const [sortPrice, setSortPrice] = useState("highest"); // default
