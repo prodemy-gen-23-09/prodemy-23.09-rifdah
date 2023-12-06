@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Product Search</title>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-gray-200 rounded-full flex items-center px-2 w-full sm:max-w-[400px] lg:max-w-[500px]">
+    <input id="searchInput" class="bg-transparent p-2 w-full focus:outline-none" type="text"
+      placeholder="Search here" />
+    <button onclick="getProducts()" class="bg-blue-500 text-white p-2 rounded-full">Search</button>
+  </div>
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
