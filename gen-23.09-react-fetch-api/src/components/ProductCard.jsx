@@ -18,7 +18,7 @@ const formatCurrency = (amount) => {
 
 const ProductCard = (props) => {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 pt-4 ml-14 mr-14">
+    <div className="grid gap-6 pt-4 ml-14 mr-14">
       {props.products.map((product) => (
         <Link
           key={product.id}

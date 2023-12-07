@@ -3,10 +3,10 @@ import "./App.css";
 import Footer from "./layouts/Footer";
 import ProductList from "./pages/ProductList";
 import ProductDetail from "./pages/ProductDetail";
-import HomeWithSWR from "./pages/HomeWithSWR";
 import Header from "./layouts/Header";
 import Nav from "./layouts/Nav";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import HomeWithSWR from "./pages/HomeWithSWR";
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
       <Header />
       <Nav />
       <Routes>
-        <Route path="/" element={<ProductList />} />
-        {/* <Route path="/home" element={<HomeWithSWR />} /> */}
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<HomeWithSWR />} />
         <Route path="/detail/:id" element={<ProductDetail />} />
       </Routes>
       <Footer />

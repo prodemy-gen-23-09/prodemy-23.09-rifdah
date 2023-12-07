@@ -3,8 +3,6 @@ import ProductCard from "../components/ProductCard";
 import Headline from "../components/Headline";
 import Home from "../components/Home";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import useSWR, { mutate } from "swr";
 
 const ProductList = () => {
   const navigate = useNavigate();
@@ -28,9 +26,6 @@ const ProductList = () => {
   const handleProductSelection = (productId) => {
     navigate(`/detail/${productId}`);
   };
-
-  const getProducts = (url) => axios.get(url).then((response) => response.data);
-  const { data } = useSWR("http://localhost:3000/products", getProducts);
 
   useEffect(() => {
     if (products) {
@@ -77,20 +72,12 @@ const ProductList = () => {
             : "Newest Release Date"}
         </button>
       </div>
-      {data?.map(({ id, title, description, img, price, releaseDate }) => (
-        <ProductCard
-          key={id}
-          title={title}
-          image={img}
-          price={price}
-          description={description}
-          releaseDate={releaseDate}
-          products={products}
-          sortOrder={sortDate}
-          sortPrice={sortPrice}
-          onClick={handleProductSelection}
-        />
-      ))}
+      <ProductCard
+        products={products}
+        sortOrder={sortDate}
+        sortPrice={sortPrice}
+        onClick={handleProductSelection}
+      />
     </div>
   );
 };
