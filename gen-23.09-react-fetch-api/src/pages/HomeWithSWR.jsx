@@ -17,10 +17,12 @@ const HomeWithSWR = () => {
     const payload = {
       description: "Sale",
       img: "/images/1.jpg",
-      extra1: "/images/1.jpg",
-      extra2: "/images/17.jpg",
-      extra3: "/images/18.jpg",
-      extra4: "/images/19.jpg",
+      extra: [
+        "/images/1.jpg",
+        "/images/17.jpg",
+        "/images/18.jpg",
+        "/images/19.jpg",
+      ],
       title: "Pleated Drawstring Pants",
       price: 550000,
       releaseDate: "2023-01-01",
@@ -29,7 +31,7 @@ const HomeWithSWR = () => {
     };
 
     axios
-      .post("http://localhost:5000/products", payload)
+      .post("http://localhost:3000/products", payload)
       .then(() => {
         console.log("Success add new product!");
         mutate();
@@ -41,7 +43,7 @@ const HomeWithSWR = () => {
   const getList = (url) => axios.get(url).then((response) => response.data);
 
   const { data, isLoading, error, mutate } = useSWR(
-    "http://localhost:5000/products",
+    "http://localhost:3000/products",
     getList
   );
 
@@ -68,7 +70,7 @@ const HomeWithSWR = () => {
             {data?.map(
               ({ id, title, img, description, price, releaseDate }) => (
                 <ProductCard
-                  keyy={id}
+                  key={id}
                   products={[
                     { id, title, img, description, price, releaseDate },
                   ]}
