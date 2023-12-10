@@ -5,6 +5,16 @@ import { BeatLoader } from "react-spinners";
 import useSWR from "swr";
 
 function ProductTable() {
+  const formatCurrency = (amount) => {
+    const formatter = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    return formatter.format(amount);
+  };
+
   const { data, isLoading, error, mutate } = useSWR(
     "http://localhost:3000/addproduct",
     (url) => axios.get(url).then((response) => response.data)
@@ -45,7 +55,7 @@ function ProductTable() {
                 <table className="min-w-full table-auto">
                   <thead>
                     <tr>
-                      <th className="px-4 py-2">ID</th>
+                      {/* <th className="px-4 py-2">ID</th> */}
                       <th className="px-4 py-2">Product Name</th>
                       <th className="px-4 py-2">Product Image</th>
                       <th className="px-4 py-2">Product Price</th>
@@ -61,18 +71,20 @@ function ProductTable() {
                           key={product.id}
                           className="border-b border-gray-200"
                         >
-                          <td className="py-2">{product.id}</td>
+                          {/* <td className="py-2">{product.id}</td> */}
                           <td className="py-2">{product.name}</td>
                           <td className="py-2">
                             <div className="flex justify-center items-center">
                               <img
                                 src={product.image}
                                 alt={`Product ${product.id} Image`}
-                                className="w-28 h-28 object-center"
+                                className="w-28 h-auto object-center"
                               />
                             </div>
                           </td>
-                          <td className="py-2">{product.price}</td>
+                          <td className="py-2">
+                            {formatCurrency(Number(product.price))}
+                          </td>
                           <td className="py-2">{product.releaseDate}</td>
                           <td className="py-2">
                             <Link

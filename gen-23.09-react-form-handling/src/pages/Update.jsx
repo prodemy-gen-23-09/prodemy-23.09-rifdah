@@ -1,43 +1,69 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 function Update() {
-  const { id } = useParams();
-  const [values, setValues] = useState({
-    id: id,
-    name: "",
-    image: "",
-    price: "",
-    releaseDate: "",
+  const schema = yup.object().shape({
+    name: yup.string().required("Product Name is Required"),
+    image: yup.string().required("Product Image is Required"),
+    price: yup.string().required("Product Price is Required"),
+    releaseDate: yup
+      .string()
+      .required("Product Release Date is Required")
+      .matches(
+        /^(19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+        "Invalid Date Format (YYYY-MM-DD)"
+      ),
   });
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/addproduct/" + id)
-      .then((res) => {
-        setValues({
-          ...values,
-          name: res.data.name,
-          image: res.data.image,
-          price: res.data.price,
-          releaseDate: res.data.releaseDate,
-        });
-      })
-      .catch((error) => console.log(error));
-  }, [id]);
 
+  const { id } = useParams();
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .put("http://localhost:3000/addproduct/" + id, values)
-      .then((res) => {
-        navigate("/list");
-      })
-      .catch((error) => console.log(error));
+
+  const {
+    handleSubmit,
+    register,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  // using axios
+  const onSubmitForm = async (data) => {
+    try {
+      await axios.put(`http://localhost:3000/addproduct/${id}`, data);
+      navigate("/list");
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/addproduct/${id}`
+        );
+        const productData = response.data;
+
+        // Set initial values to form fields
+        setValue("name", productData.name);
+        setValue("image", productData.image);
+        setValue("price", productData.price);
+        setValue("releaseDate", productData.releaseDate);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [id, setValue]);
+
   return (
-    <section className="px-20">
+    <section className="px-20 ml-96">
       <h1 className="text-3xl font-semibold">Update Product Form</h1>
       <div className="grid grid-cols-2 gap-20 mt-8">
         <div className="w-[500px]">
@@ -45,21 +71,17 @@ function Update() {
           <hr />
           <form
             className="flex flex-col gap-4 mt-4"
-            onSubmit={handleSubmit}
-            // encType="multipart/form-data"
+            onSubmit={handleSubmit(onSubmitForm)}
           >
             <div>
               <label htmlFor="name">Product Name</label>
               <input
                 placeholder="Product Name"
                 className="w-full rounded-lg border-[1px] border-gray-200 p-4 pe-12 text-sm focus:outline-sky-200"
-                // {...register("name")}
-                value={values.name}
-                onChange={(e) => setValues({ ...values, name: e.target.value })}
+                {...register("name")}
                 id="name"
               />
-
-              {/* <p className="error">{errors.name?.message}</p> */}
+              <p className="error text-red-600">{errors.name?.message}</p>
             </div>
 
             <div>
@@ -67,15 +89,10 @@ function Update() {
               <input
                 placeholder="Product Image"
                 className="w-full rounded-lg border-[1px] border-gray-200 p-4 pe-12 text-sm focus:outline-sky-200"
-                // {...register("image")}
-                value={values.image}
-                onChange={(e) =>
-                  setValues({ ...values, image: e.target.value })
-                }
+                {...register("image")}
                 id="image"
               />
-
-              {/* <p className="error">{errors.image?.message}</p> */}
+              <p className="error text-red-600">{errors.image?.message}</p>
             </div>
 
             <div>
@@ -83,14 +100,10 @@ function Update() {
               <input
                 placeholder="Product Price"
                 className="w-full rounded-lg border-[1px] border-gray-200 p-4 pe-12 text-sm focus:outline-sky-200"
-                // {...register("price")}
-                value={values.price}
-                onChange={(e) =>
-                  setValues({ ...values, price: e.target.value })
-                }
+                {...register("price")}
                 id="price"
               />
-              {/* <p className="error">{errors.price?.message}</p> */}
+              <p className="error text-red-600">{errors.price?.message}</p>
             </div>
 
             <div>
@@ -98,17 +111,16 @@ function Update() {
               <input
                 placeholder="Product Release Date"
                 className="w-full rounded-lg border-[1px] border-gray-200 p-4 pe-12 text-sm focus:outline-sky-200"
-                // {...register("releaseDate")}
-                value={values.releaseDate}
-                onChange={(e) =>
-                  setValues({ ...values, releaseDate: e.target.value })
-                }
+                {...register("releaseDate")}
                 id="releaseDate"
               />
-              {/* <p className="error">{errors.releaseDate?.message}</p> */}
+              <p className="error text-red-600">
+                {errors.releaseDate?.message}
+              </p>
             </div>
+
             <button
-              className="rounded-lg bg-sky-400 p-2 text-white self-center w-full"
+              className="border border-white rounded-lg bg-sky-400 p-2 text-white self-center w-full"
               type="submit"
             >
               Update Product

@@ -1,16 +1,17 @@
 import axios from "axios";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 function HookForm() {
   const schema = yup.object().shape({
-    name: yup.string().required("Product Name is required"),
-    image: yup.mixed().required("Product Image is required"),
+    name: yup.string().required("Product Name is Required"),
+    image: yup.string().required("Product Image is Required"),
     // .test("fileSize", "File size is too large", (value) => {
     //   return value && value[0] && value[0].size <= 1024000; // 1MB
     // }),
-    price: yup.string().required("Product Price is required"),
+    price: yup.string().required("Product Price is Required"),
     releaseDate: yup
       .string()
       .required("Product Release Date is required")
@@ -19,6 +20,8 @@ function HookForm() {
         "Invalid Date Format (YYYY-MM-DD)"
       ),
   });
+
+  const [products, setProducts] = useState([]);
 
   const {
     register,
@@ -62,7 +65,7 @@ function HookForm() {
   };
 
   return (
-    <section className="px-20">
+    <section className="px-20 ml-96">
       <h1 className="text-3xl font-semibold">Add Product Form</h1>
       <div className="grid grid-cols-2 gap-20 mt-8">
         <div className="w-[500px]">
@@ -82,7 +85,7 @@ function HookForm() {
                 id="name"
               />
 
-              <p className="error">{errors.name?.message}</p>
+              <p className="error text-red-600">{errors.name?.message}</p>
             </div>
 
             <div>
@@ -94,7 +97,7 @@ function HookForm() {
                 id="image"
               />
 
-              <p className="error">{errors.image?.message}</p>
+              <p className="error text-red-600">{errors.image?.message}</p>
             </div>
 
             {/* <div>
@@ -121,7 +124,7 @@ function HookForm() {
                 {...register("price")}
                 id="price"
               />
-              <p className="error">{errors.price?.message}</p>
+              <p className="error text-red-600">{errors.price?.message}</p>
             </div>
 
             <div>
@@ -132,11 +135,13 @@ function HookForm() {
                 {...register("releaseDate")}
                 id="releaseDate"
               />
-              <p className="error">{errors.releaseDate?.message}</p>
+              <p className="error text-red-600">
+                {errors.releaseDate?.message}
+              </p>
             </div>
 
             <button
-              className="rounded-lg bg-sky-400 p-2 text-white self-center w-full"
+              className="rounded-lg bg-sky-400 p-2 text-white self-center w-full border border-white"
               type="submit"
             >
               Add New Product
