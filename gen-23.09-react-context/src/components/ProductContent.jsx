@@ -9,33 +9,25 @@ import { CartContext } from "../context/CartContext";
 import axios from "axios";
 import useSWR from "swr";
 import { BeatLoader } from "react-spinners";
+import { toRupiah } from "../utils/formatter";
 
 const fetcher = (url) => axios.get(url).then((response) => response.data);
 
 const ProductContent = (props) => {
   const navigate = useNavigate();
   const { id } = useParams(); // Get the id from the route parameters
-  const [mainImage, setMainImage] = useState(props.products[0].img);
-  const [qty, setQty] = useState(1);
   const { setDataCart } = useContext(CartContext);
 
-  const { data, isLoading, error } = useSWR(
-    // Use the fetched id from useParams in the URL
+  // Move the declaration of 'data' here
+  const { data, isLoading } = useSWR(
     `http://localhost:3000/products/${id}`,
     fetcher
   );
 
-  if (isLoading) return <BeatLoader color="#38BDF8" />;
+  const [mainImage, setMainImage] = useState(data ? data.img : "");
+  const [qty, setQty] = useState(1);
 
-  const formatCurrency = (amount) => {
-    const formatter = new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-    return formatter.format(amount);
-  };
+  if (isLoading) return <BeatLoader color="#38BDF8" />;
 
   const showImage = (extraImage) => {
     setMainImage(extraImage);
@@ -48,55 +40,36 @@ const ProductContent = (props) => {
     }
   };
 
-  const onClickAddToCart = () => {
-    setDataCart({
-      ...data,
-      qty,
-    });
-    navigate("/cart");
+  const onClickAddToCart = async () => {
+    if (data) {
+      const payload = {
+        id: data.id,
+        title: data.title,
+        img: data.img,
+        price: data.price,
+        qty,
+        total: data.price * qty,
+      };
+
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/addtocart",
+          payload
+        );
+        setDataCart(response.data);
+        navigate("/cart");
+      } catch (error) {
+        console.error("Error adding to cart:", error);
+      }
+    }
   };
-
-  // const onSubmit = (data) => {
-  //   console.log(data);
-
-  //   const payload = {
-  //     name: data.name,
-  //     image: data.image,
-  //     price: data.price,
-  //     quantity: data.quantity,
-  //     total: data.total,
-  //   };
-
-  //   axios
-  //     .post("http://localhost:3000/addtocart", payload)
-  //     .then(() => {
-  //       alert("Successfully add to cart!");
-  //       reset();
-  //       axios.get("http://localhost:3000/addtocart").then((res) => {
-  //         setProducts(res.data.addtocart);
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       if (error.response) {
-  //         alert(`Error: ${error.response.data.message}`);
-  //       } else {
-  //         alert("An error occurred while processing your request.");
-  //       }
-
-  //       reset();
-  //     });
-  // };
 
   return (
     <div>
-      {/* <form
-        className="flex flex-col gap-4 mt-4"
-        // onSubmit={handleSubmit(onSubmit)}
-      > */}
       {props.products.map((product) => (
         <div key={product.id} className="container grid grid-cols-2 gap-6">
           <div>
-            <img src={mainImage} alt="" className="w-full" />
+            <img src={mainImage || data.img || ""} alt="" className="w-full" />
             <div className="grid grid-cols-5 gap-2 mt-2">
               <img
                 src={product.extra1}
@@ -155,7 +128,7 @@ const ProductContent = (props) => {
             </div>
             <div className="flex items-baseline mb-1 space-x-2 font-Jost mt-4">
               <p className="text-2xl text-primary font-semibold">
-                {formatCurrency(Number(product.price))}
+                {toRupiah(product.price)}
               </p>
             </div>
             <h3 className="mt-4 uppercase font-semibold">Editor's Note</h3>
@@ -222,7 +195,6 @@ const ProductContent = (props) => {
           </div>
         </div>
       ))}
-      {/* </form> */}
     </div>
   );
 };

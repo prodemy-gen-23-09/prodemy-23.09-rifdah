@@ -209,12 +209,52 @@
   ],
   "addtocart": [
     {
-      "id": 1,
-      "name": "Linen Woven Shirt",
-      "image": "https://cdn.modaoperandi.com/assets/images/products/969901/609861/aexae-green-linen-woven-shirt-2.jpg?_v=1701883573",
-      "price": "375000",
-      "quantity": "2",
-      "total": "750000"
+      "id": 13,
+      "title": "Paneled Denim and Twill Jacket",
+      "img": "/images/13.jpg",
+      "price": 1350000,
+      "qty": 4,
+      "total": 5400000
+    },
+    {
+      "id": 8,
+      "title": "Bienal Lame Blouse",
+      "img": "/images/8.jpg",
+      "price": 700000,
+      "qty": 4,
+      "total": 2800000
+    },
+    {
+      "id": 12,
+      "title": "Exclusive Denim Jacket",
+      "img": "/images/12.jpg",
+      "price": 535000,
+      "qty": 6,
+      "total": 3210000
+    },
+    {
+      "id": 9,
+      "title": "Bremy Wool Pants",
+      "img": "/images/9.jpg",
+      "price": 475000,
+      "qty": 2,
+      "total": 950000
+    },
+    {
+      "id": 15,
+      "title": "Lison Cotton Cargo Pants",
+      "img": "/images/15.jpg",
+      "price": 480000,
+      "qty": 1,
+      "total": 480000
+    },
+    {
+      "id": 10,
+      "title": "Exclusive Pleated Wool Midi Skirt",
+      "img": "/images/10.jpg",
+      "price": 350000,
+      "qty": 3,
+      "total": 1050000
     }
   ]
 }
