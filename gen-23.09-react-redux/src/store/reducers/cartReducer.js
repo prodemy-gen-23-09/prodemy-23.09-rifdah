@@ -13,9 +13,9 @@ const cartReducer = (state = initialState, action) => {
     case ADDTO_CART:
       const newItem = action.payload;
       const existingItemIndex = findCartItemIndex(state.dataCart, newItem);
-      // tidak ditemukan dalam array
+      // tidak ditemukan
       if (existingItemIndex !== -1) { 
-        // Item sudah ada di keranjang, tambahkan jumlahnya
+        // Item sudah ada di keranjang, tambah qty
         const updatedCart = state.dataCart.map((item, index) => {
           if (index === existingItemIndex) {
             return {
@@ -31,17 +31,12 @@ const cartReducer = (state = initialState, action) => {
           dataCart: updatedCart,
         };
       } else {
-        // Item belum ada di keranjang, tambahkan item baru
+        // Item belum ada di keranjang, tambah item baru
         return {
           ...state,
           dataCart: [...state.dataCart, newItem],
         };
       }
-
-      // return {
-      //   ...state,
-      //   dataCart: [...state.dataCart, action.payload],
-      // };
     case REMOVE_FROM_CART:
       return {
         ...state,
