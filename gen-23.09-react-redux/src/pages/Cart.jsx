@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { toRupiah } from "../utils/formatter";
-import axios from "axios";
 import { data } from "../data/data";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
