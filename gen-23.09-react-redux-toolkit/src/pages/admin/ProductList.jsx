@@ -3,18 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import useSWR from "swr";
+import { toRupiah } from "../../utils/formatter";
 
-function ProductTable() {
-  const formatCurrency = (amount) => {
-    const formatter = new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-    return formatter.format(amount);
-  };
-
+function ProductList() {
   const { data, isLoading, error, mutate } = useSWR(
     "http://localhost:3000/addproduct",
     (url) => axios.get(url).then((response) => response.data)
@@ -82,9 +73,7 @@ function ProductTable() {
                               />
                             </div>
                           </td>
-                          <td className="py-2">
-                            {formatCurrency(Number(product.price))}
-                          </td>
+                          <td className="py-2">{toRupiah(product.price)}</td>
                           <td className="py-2">{product.releaseDate}</td>
                           <td className="py-2">
                             <Link
@@ -115,4 +104,4 @@ function ProductTable() {
   );
 }
 
-export default ProductTable;
+export default ProductList;

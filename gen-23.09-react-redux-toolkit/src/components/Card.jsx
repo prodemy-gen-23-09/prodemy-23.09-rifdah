@@ -5,18 +5,9 @@ import {
 } from "@tabler/icons-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { toRupiah } from "../utils/formatter";
 
-const formatCurrency = (amount) => {
-  const formatter = new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
-  return formatter.format(amount);
-};
-
-const ProductCard = (props) => {
+function Card(props) {
   return (
     <div className="grid gap-6 pt-4 ml-14 mr-14">
       {props.products.map((product) => (
@@ -52,7 +43,7 @@ const ProductCard = (props) => {
             <div className="justify-center items-center text-center px-2 py-4">
               <p className="font-bold">{product.title}</p>
               <p className="bg-primary text-white p-1 rounded-full m-3">
-                {formatCurrency(Number(product.price))}
+                {toRupiah(product.price)}
               </p>
               <p>Release Date : {product.releaseDate}</p>
             </div>
@@ -61,6 +52,6 @@ const ProductCard = (props) => {
       ))}
     </div>
   );
-};
+}
 
-export default ProductCard;
+export default Card;

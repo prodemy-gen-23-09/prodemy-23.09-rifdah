@@ -5,8 +5,8 @@ import {
   IconStarFilled,
 } from "@tabler/icons-react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 import useSWR from "swr";
 import { BeatLoader } from "react-spinners";
 import { addToCart } from "../store/reducers/cartSlice";
@@ -14,7 +14,7 @@ import { toRupiah } from "../utils/formatter";
 
 const fetcher = (url) => axios.get(url).then((response) => response.data);
 
-const ProductContent = (props) => {
+function Detail(props) {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -47,8 +47,12 @@ const ProductContent = (props) => {
 
   if (isLoading) return <BeatLoader color="#38BDF8" />;
 
+  if (!data) {
+    return <p>Data not found</p>;
+  }
+
   const showImage = (extraImage) => {
-    setMainImage(extraImage);
+    setMainImage(extraImage || data?.img || "");
   };
 
   return (
@@ -57,33 +61,18 @@ const ProductContent = (props) => {
         <div>
           <img src={mainImage || data.img || ""} alt="" className="w-full" />
           <div className="grid grid-cols-5 gap-2 mt-2">
-            <img
-              src={data.extra1}
-              alt=""
-              className="w-full cursor-pointer border"
-              onClick={() => showImage(data.extra1)}
-            />
-            <img
-              src={data.extra2}
-              alt=""
-              className="w-full cursor-pointer border"
-              onClick={() => showImage(data.extra2)}
-            />
-            <img
-              src={data.extra3}
-              alt=""
-              className="w-full cursor-pointer border"
-              onClick={() => showImage(data.extra3)}
-            />
-            <img
-              src={data.extra4}
-              alt=""
-              className="w-full cursor-pointer border"
-              onClick={() => showImage(data.extra4)}
-            />
+            {data.extras &&
+              data.extras.map((extra, index) => (
+                <img
+                  key={index}
+                  src={extra}
+                  alt={`Extra ${index + 1}`}
+                  className="w-full cursor-pointer border"
+                  onClick={() => showImage(extra)}
+                />
+              ))}
           </div>
         </div>
-
         <div>
           <h2 className="text-3xl font-medium capitalize mb-2">{data.title}</h2>
           <div className="flex items-center mb-4">
@@ -178,6 +167,6 @@ const ProductContent = (props) => {
       </div>
     </div>
   );
-};
+}
 
-export default ProductContent;
+export default Detail;

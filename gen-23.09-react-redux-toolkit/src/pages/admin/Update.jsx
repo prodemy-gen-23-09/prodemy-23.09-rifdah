@@ -1,72 +1,67 @@
+import React, { useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-function HookForm() {
+function Update() {
   const schema = yup.object().shape({
     name: yup.string().required("Product Name is Required"),
     image: yup.string().required("Product Image is Required"),
-    // .test("fileSize", "File size is too large", (value) => {
-    //   return value && value[0] && value[0].size <= 1024000; // 1MB
-    // }),
     price: yup.string().required("Product Price is Required"),
     releaseDate: yup
       .string()
-      .required("Product Release Date is required")
+      .required("Product Release Date is Required")
       .matches(
         /^(19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
         "Invalid Date Format (YYYY-MM-DD)"
       ),
   });
 
-  const [products, setProducts] = useState([]);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const {
-    register,
     handleSubmit,
-    formState: { errors },
-    reset,
-    handleBlur,
+    register,
     setValue,
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmitForm = (data) => {
-    console.log(data);
+  const onSubmitForm = async (data) => {
+    try {
+      await axios.put(`http://localhost:3000/addproduct/${id}`, data);
+      navigate("/list");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    const payload = {
-      name: data.name,
-      image: data.image,
-      price: data.price,
-      releaseDate: data.releaseDate,
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/addproduct/${id}`
+        );
+        const productData = response.data;
+        setValue("name", productData.name);
+        setValue("image", productData.image);
+        setValue("price", productData.price);
+        setValue("releaseDate", productData.releaseDate);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    axios
-      .post("http://localhost:3000/addproduct", payload)
-      .then(() => {
-        alert("Successfully made a new product!");
-        reset();
-        axios.get("http://localhost:3000/addproduct").then((res) => {
-          setProducts(res.data.addproduct);
-        });
-      })
-      .catch((error) => {
-        if (error.response) {
-          alert(`Error: ${error.response.data.message}`);
-        } else {
-          alert("An error occurred while processing your request.");
-        }
-
-        reset();
-      });
-  };
+    fetchData();
+  }, [id, setValue]);
 
   return (
     <section className="px-20 ml-96">
-      <h1 className="text-3xl font-semibold">Add Product Form</h1>
+      <h1 className="text-3xl font-semibold">Update Product Form</h1>
       <div className="grid grid-cols-2 gap-20 mt-8">
         <div className="w-[500px]">
           <h2>New Product</h2>
@@ -74,7 +69,6 @@ function HookForm() {
           <form
             className="flex flex-col gap-4 mt-4"
             onSubmit={handleSubmit(onSubmitForm)}
-            encType="multipart/form-data"
           >
             <div>
               <label htmlFor="name">Product Name</label>
@@ -84,7 +78,6 @@ function HookForm() {
                 {...register("name")}
                 id="name"
               />
-
               <p className="error text-red-600">{errors.name?.message}</p>
             </div>
 
@@ -96,25 +89,8 @@ function HookForm() {
                 {...register("image")}
                 id="image"
               />
-
               <p className="error text-red-600">{errors.image?.message}</p>
             </div>
-
-            {/* <div>
-              <label htmlFor="image">Product Image</label>
-              <input
-                type="file"
-                accept="image/*"
-                className="w-full rounded-lg border-[1px] border-gray-200 p-4 pe-12 text-sm focus:outline-sky-200"
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  setValue("image", file);
-                }}
-                onBlur={handleBlur}
-                id="image"
-              />
-              <p className="error">{errors.image?.message}</p>
-            </div> */}
 
             <div>
               <label htmlFor="price">Product Price</label>
@@ -141,10 +117,10 @@ function HookForm() {
             </div>
 
             <button
-              className="rounded-lg bg-sky-400 p-2 text-white self-center w-full border border-white"
+              className="border border-white rounded-lg bg-sky-400 p-2 text-white self-center w-full"
               type="submit"
             >
-              Add New Product
+              Update Product
             </button>
           </form>
         </div>
@@ -153,4 +129,4 @@ function HookForm() {
   );
 }
 
-export default HookForm;
+export default Update;

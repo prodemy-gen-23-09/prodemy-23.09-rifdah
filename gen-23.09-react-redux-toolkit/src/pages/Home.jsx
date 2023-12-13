@@ -3,9 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { BeatLoader } from "react-spinners";
 import useSWR, { mutate } from "swr";
-import ProductCard from "../components/ProductCard";
+import Card from "../components/Card";
+import Headline from "../components/Headline";
+import Banner from "../components/Banner";
 
-const HomeWithSWR = () => {
+function Home() {
   const navigate = useNavigate();
 
   const onClickCard = (id) => {
@@ -98,6 +100,8 @@ const HomeWithSWR = () => {
 
   return (
     <section className="flex flex-col justify-center">
+      <Banner />
+      <Headline />
       <div className="flex justify-center gap-4">
         <button
           className="rounded-lg bg-white p-2 text-black self-center hover:text-white hover:bg-black"
@@ -130,7 +134,7 @@ const HomeWithSWR = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {products?.map(
               ({ id, title, img, description, price, releaseDate }) => (
-                <ProductCard
+                <Card
                   key={id}
                   products={[
                     { id, title, img, description, price, releaseDate },
@@ -144,6 +148,6 @@ const HomeWithSWR = () => {
       </div>
     </section>
   );
-};
+}
 
-export default HomeWithSWR;
+export default Home;
