@@ -28,8 +28,6 @@ function App() {
             <Route path="/home" element={<Home />} />
           </Route>
 
-          {/* <Route element={<PrivateRoutes />} /> */}
-
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/home" element={<Home />} />
