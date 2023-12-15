@@ -331,6 +331,13 @@
       "price": "480000",
       "releaseDate": "2024-03-01",
       "id": 15
+    },
+    {
+      "name": "Boyfriend Suede Shirt",
+      "image": "https://cdn.modaoperandi.com/assets/images/products/968114/607909/sergio-hudson-blue-hw-flared-pant.jpg?_v=1701260626",
+      "price": "50000",
+      "releaseDate": "2024-01-12",
+      "id": 16
     }
   ],
   "users": [

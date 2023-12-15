@@ -26,8 +26,8 @@ function Card(props) {
               </h5>
             </div>
             <img
-              src={product.img}
-              alt={product.title}
+              src={product.image}
+              alt={product.name}
               className="w-3/2 h-3/4 object-cover rounded-t-lg"
             />
             <div className="flex justify-between items-center text-center px-2 py-4 mr-5 ml-5">
@@ -41,7 +41,7 @@ function Card(props) {
               <IconShoppingCart />
             </div>
             <div className="justify-center items-center text-center px-2 py-4">
-              <p className="font-bold">{product.title}</p>
+              <p className="font-bold">{product.name}</p>
               <p className="bg-primary text-white p-1 rounded-full m-3">
                 {toRupiah(product.price)}
               </p>

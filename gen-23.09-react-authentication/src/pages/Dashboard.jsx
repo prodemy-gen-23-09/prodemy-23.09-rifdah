@@ -37,7 +37,7 @@ export const Dashboard = () => {
               <h4 className="text-2xl font-bold mb-2">Products</h4>
               <p className="mb-4">Manage all the products here.</p>
               <Link
-                className="rounded-lg bg-lime-600 p-2 text-white hover:bg-lime-700"
+                className="rounded-lg bg-sky-600 p-2 text-white hover:bg-sky-700"
                 to="/list"
               >
                 Manage
@@ -45,7 +45,7 @@ export const Dashboard = () => {
               <p className="mb-4 mt-4">See more products in this store</p>
               <Link
                 to="/home"
-                className="rounded-lg bg-lime-600 p-2 text-white hover:bg-lime-700"
+                className="rounded-lg bg-sky-600 p-2 text-white hover:bg-sky-700"
               >
                 See Product
               </Link>
@@ -62,7 +62,7 @@ export const Dashboard = () => {
               <p className="mb-4">See more products in this store</p>
               <Link
                 to="/home"
-                className="rounded-lg bg-lime-600 p-2 text-white hover:bg-lime-700"
+                className="rounded-lg bg-sky-600 p-2 text-white hover:bg-sky-700"
               >
                 See Product
               </Link>
