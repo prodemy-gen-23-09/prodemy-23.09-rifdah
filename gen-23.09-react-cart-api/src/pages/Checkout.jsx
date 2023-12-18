@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,10 +12,42 @@ import { removeFromCart } from "../store/reducers/cartSlice";
 function Checkout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
   const { dataCheckout } = useSelector((state) => state.checkout) || {
     dataCheckout: [],
   };
-  const { dataCart } = useSelector((state) => state.cart) || { dataCart: [] };
+  const { cart } = useSelector((state) => state.cart) || { cart: [] };
+
+  useEffect(() => {
+    console.log("Email Pengguna:", user.email);
+    console.log("Data Checkout sebelum Filter:", cart);
+
+    // Check if cart is defined before filtering
+    const filteredData =
+      cart && user ? cart.filter((item) => user.email === item.userId) : [];
+
+    console.log("Data Checkout yang Difilter:", filteredData);
+
+    setDataCart(filteredData);
+  }, [user, cart]);
+
+  const [dataCart, setDataCart] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/cart");
+        const userCart = response.data.filter(
+          (item) => user.email === item.userId
+        );
+        setDataCart(userCart);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [user]);
 
   const schema = yup.object().shape({
     name: yup.string().required("Name is required"),
@@ -43,8 +75,6 @@ function Checkout() {
   });
 
   const onSubmitForm = async (data) => {
-    console.log(data);
-
     const payload = dataCart.map((item) => ({
       userName: data.name,
       userEmail: data.email,
@@ -57,17 +87,20 @@ function Checkout() {
       price: item.price,
       qty: item.qty,
     }));
+
     dispatch(checkoutBooking(payload));
 
-    axios
-      .post("http://localhost:3000/booking", payload)
-      .then(() => {
-        dataCart.forEach((item) => dispatch(removeFromCart(item.id)));
-        alert("Successfully checkout!");
-        reset();
-        navigate("/home");
-      })
-      .catch((error) => console.log(error));
+    try {
+      await axios.post("http://localhost:3000/booking", payload);
+
+      dataCart.forEach((item) => dispatch(removeFromCart(item.id)));
+
+      alert("Successfully checkout!");
+      reset();
+      navigate("/home");
+    } catch (error) {
+      console.error("Error during checkout:", error);
+    }
   };
 
   return (
@@ -179,13 +212,14 @@ function Checkout() {
           <h2>Your Order</h2>
           <hr />
           <div className="flex flex-col">
-            {dataCheckout.map((item) => (
+            {dataCart.map((item) => (
               <div key={item.id} className="flex justify-between my-4">
-                <img src={item.img} alt="foto" className="w-16" />
+                <img src={item.img} alt="foto" className="w-20" />
                 <h3 className="font-bold">{item.title}</h3>
                 <p className="font-semibold">{item.description}</p>
-                <span>{item.qty}</span>
+                <span>{item.quantity}</span>
                 <span>{toRupiah(item.price)}</span>
+                <span>{toRupiah(item.price * item.quantity)}</span>
               </div>
             ))}
           </div>
@@ -196,8 +230,8 @@ function Checkout() {
             <span className="font-bold">Total</span>
             <span className="font-bold">
               {toRupiah(
-                dataCheckout.reduce(
-                  (total, item) => total + item.qty * item.price,
+                dataCart.reduce(
+                  (total, item) => total + item.quantity * item.price,
                   0
                 )
               )}
