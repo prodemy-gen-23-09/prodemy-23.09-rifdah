@@ -22,7 +22,6 @@ function Checkout() {
     console.log("Email Pengguna:", user.email);
     console.log("Data Checkout sebelum Filter:", cart);
 
-    // Check if cart is defined before filtering
     const filteredData =
       cart && user ? cart.filter((item) => user.email === item.userId) : [];
 
@@ -92,9 +91,7 @@ function Checkout() {
 
     try {
       await axios.post("http://localhost:3000/booking", payload);
-
       dataCart.forEach((item) => dispatch(removeFromCart(item.id)));
-
       alert("Successfully checkout!");
       reset();
       navigate("/home");
@@ -158,25 +155,28 @@ function Checkout() {
               <p className="error">{errors.orderDate?.message}</p>
             </div>
 
-            <div className="flex gap-8">
-              <div className="flex gap-2">
-                <input
-                  type="radio"
-                  id="delivery"
-                  {...register("delivery")}
-                  value="JNP Same Day"
-                />
-                <label htmlFor="delivery">JNP Same Day</label>
-              </div>
+            <div>
+              <label htmlFor="orderDate">Delivery Method</label>
+              <div className="flex gap-8 mt-1">
+                <div className="flex gap-2">
+                  <input
+                    type="radio"
+                    id="delivery"
+                    {...register("delivery")}
+                    value="JNP Same Day"
+                  />
+                  <label htmlFor="delivery">JNP Same Day</label>
+                </div>
 
-              <div className="flex gap-2">
-                <input
-                  type="radio"
-                  id="delivery"
-                  {...register("delivery")}
-                  value="J&P Express"
-                />
-                <label htmlFor="delivery">J&P Express</label>
+                <div className="flex gap-2">
+                  <input
+                    type="radio"
+                    id="delivery"
+                    {...register("delivery")}
+                    value="J&P Express"
+                  />
+                  <label htmlFor="delivery">J&P Express</label>
+                </div>
               </div>
             </div>
 
